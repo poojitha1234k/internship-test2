@@ -1,0 +1,27 @@
+import csv
+fiels=[]
+list1=[]
+with open("main.csv",'r') as csvfile:
+      csvreader = csv.reader(file)
+      fields = next(csvreader)
+for row in csvreader:
+    list1.append(row)
+dict={} 
+for i in range(len(list1)):
+    if list1[i][3] in dict:
+            dict[list1[i][3]].append(list1[i][1]) 
+    else:
+            dict[list1[i][3]]=list() 
+            dict[list1[i][3]].append(list1[i][1])
+     
+store=[]
+for i in dict.keys():
+     store.append([i,min(dict[i],max(dict[i]))
+store.sort(key=lambda x :x[0])
+
+headerfields=[ocupation, min,max]
+with open ('output.csv','w', encoding='UTF8' ) as j:
+      write=csv.writer(j);
+      write.writerow(headerfields);
+      write.writerows[store]
+file.close()
